@@ -10,29 +10,28 @@ export class AuthService {
   private headers: Headers = new Headers({'Content-Type': 'application/json'});
   constructor(private http: Http) {}
   login(user: User): Promise<any> {
-    let url: string = `${this.BASE_URL}/login`;
-    return this.http.post(url, user, {headers: this.headers}).toPromise();
+    let loginUrl: string = `${this.BASE_URL}/login`;
+    return this.http.post(loginUrl, user, {headers: this.headers}).toPromise();
   }
 
-  
+
   register(user: User): Promise<any> {
-    let url: string = `${this.BASE_URL}/register`;
-    return this.http.post(url, user, {headers: this.headers}).toPromise();
+    let registerUrl: string = `${this.BASE_URL}/register`;
+    return this.http.post(registerUrl, user, {headers: this.headers}).toPromise();
   }
 
   ensureAuthenticated(token): Promise<any> {
-  let url: string = `${this.BASE_URL}/status`;
-  let headers: Headers = new Headers({
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`
-  });
-  return this.http.get(url, {headers: headers}).toPromise();
+    let authenticationUrl: string = `${this.BASE_URL}/status`;
+    let headers: Headers = new Headers({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get(authenticationUrl, {headers: this.headers}).toPromise();
+  }
 
-  let url: string = `${this.BASE_URL}/logout`;
-  let headers: Headers = new Headers({
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`
-  });
-  return this.http.post(url, user, {headers: this.headers}).toPromise();
-}
+
+  logout(user: User): Promise<any> {
+    let logoutUrl: string = `${this.BASE_URL}/logout`;
+    return this.http.post(logoutUrl, user, {headers: this.headers}).toPromise();
+  }
 }

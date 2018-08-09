@@ -36,11 +36,12 @@ export class StatusComponent implements OnInit {
       this.auth.ensureAuthenticated(token)
       .then((user) => {
         console.log(user.json());
-        localStorage.removeItem('token', user.json().auth_token);
+        localStorage.removeItem(user.json().auth_token);
         this.router.navigateByUrl('/login');
-    })
-    .catch((err) => {
+        })
+        .catch((err) => {
       console.log(err);
-    });
+      });
+    }
   }
 }
