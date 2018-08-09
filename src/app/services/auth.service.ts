@@ -21,6 +21,7 @@ export class AuthService {
   }
 
   ensureAuthenticated(token): Promise<any> {
+    console.log(" am i here " + token)
     let authenticationUrl: string = `${this.BASE_URL}/status`;
     let headers: Headers = new Headers({
       'Content-Type': 'application/json',

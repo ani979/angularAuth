@@ -27,19 +27,15 @@ import { LoginRedirect } from './services/login-redirect.service';
     RouterModule.forRoot([
       {
         path: 'login',
-        component: LoginComponent,
-        canActivate: [LoginRedirect]
+        component: LoginComponent
       },
       {
         path: 'register',
-        component: RegisterComponent,
-        canActivate: [LoginRedirect]
+        component: RegisterComponent
       },
       {
         path: 'status',
-        component: StatusComponent,
-        canActivate:
-        [EnsureAuthenticated]
+        component: StatusComponent
       }
     ])
   ],

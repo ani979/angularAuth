@@ -15,7 +15,9 @@ export class StatusComponent implements OnInit {
   constructor(private router: Router, private auth: AuthService) {}
   ngOnInit(): void {
     const token = localStorage.getItem('token');
+    console.log("token is viewed from status html " + token);
     if (token) {
+      console.log("yes")
       this.auth.ensureAuthenticated(token)
       .then((user) => {
         console.log(user.json());
@@ -40,7 +42,7 @@ export class StatusComponent implements OnInit {
         this.router.navigateByUrl('/login');
         })
         .catch((err) => {
-      console.log(err);
+          console.log(err);
       });
     }
   }
